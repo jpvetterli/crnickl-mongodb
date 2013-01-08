@@ -1,5 +1,5 @@
 /*
- *   Copyright 2012 Hauser Olsson GmbH
+ *   Copyright 2012-2013 Hauser Olsson GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,9 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * 
- * Package: ch.agent.crnickl.jdbc
- * Type: ReadMethodsForValueType
- * Version: 1.0.0
  */
 package ch.agent.crnickl.mongodb;
 
@@ -44,7 +41,6 @@ import com.mongodb.DBObject;
  * A stateless object with methods providing read access to value types.
  *  
  * @author Jean-Paul Vetterli
- * @version 1.0.0
  */
 public class ReadMethodsForValueType extends MongoDatabaseMethods {
 
