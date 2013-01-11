@@ -25,12 +25,12 @@ Distribution
 ------------
 
 The distribution consists of a binary JAR with 
-compiled classes, of a javadoc JAR and of a source JAR. For version x.y.z:
+compiled classes, of a javadoc JAR and of a source JAR. This is the first 
+version:
 
-	crnickl-mongodb-x.y.z.jar
-	crnickl-mongodb-x.y.z-javadoc.jar
-	crnickl-mongodb-x.y.z-sources.jar
-
+	crnickl-mongodb-1.0.0.jar
+	crnickl-mongodb-1.0.0-javadoc.jar
+	crnickl-mongodb-1.0.0-sources.jar
 
 For Maven users
 ---------------
