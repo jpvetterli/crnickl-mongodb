@@ -54,7 +54,7 @@ public class WriteMethodsForProperty extends ReadMethodsForProperty {
 	 * Create a new property and return its key. 
 	 * If creation fails throw an exception.
 	 * 
-	 * @param property a property
+	 * @param prop a property
 	 * @throws T2DBException
 	 */
 	public <T>void createProperty(Property<T> prop) throws T2DBException {
@@ -79,7 +79,7 @@ public class WriteMethodsForProperty extends ReadMethodsForProperty {
 	 * Delete the property.
 	 * If deleting fails throw an exception.
 	 * 
-	 * @param property a property
+	 * @param prop a property
 	 * @param policy a schema updating policy
 	 * @throws T2DBException
 	 */
@@ -115,7 +115,7 @@ public class WriteMethodsForProperty extends ReadMethodsForProperty {
 	 * Update the name of the property.
 	 * If updating fails throw an exception.
 	 * 
-	 * @param property a property
+	 * @param prop a property
 	 * @param policy a schema updating policy
 	 * @throws T2DBException
 	 */

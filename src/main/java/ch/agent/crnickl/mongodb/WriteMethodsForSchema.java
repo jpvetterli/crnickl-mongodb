@@ -95,7 +95,6 @@ public class WriteMethodsForSchema extends ReadMethodsForSchema {
 	 * Throw an exception if the operation cannot be done.
 	 * 
 	 * @param schema a schema
-	 * @param base a base schema or null
 	 * @throws T2DBException
 	 */
 	public void createSchema(UpdatableSchema schema) throws T2DBException {

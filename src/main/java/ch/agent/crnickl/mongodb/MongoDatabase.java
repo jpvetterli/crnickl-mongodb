@@ -106,8 +106,6 @@ public class MongoDatabase extends DatabaseBackendImpl {
 	 * for dangerous updates. The parameter value is a range of milliseconds
 	 * specified with two numbers separated by a hyphen. The default range is
 	 * {@link #DB_PARAM_IntInt_WAITING_DELAY_RANGE_DEFAULT}.
-	 * <p>
-	 * @see #getWaitingDelay()
 	 */
 	public static final String DB_PARAM_IntInt_WAITING_DELAY_RANGE = "dbWaitingDelayRange";
 	public static final String DB_PARAM_IntInt_WAITING_DELAY_RANGE_DEFAULT = "3000-6000";
@@ -218,7 +216,7 @@ public class MongoDatabase extends DatabaseBackendImpl {
 	 *     fail
 	 * memo := get prior state of document to be updated
 	 * update document
-	 * sleep(getWaitingDelay())
+	 * sleep()
 	 * count references again
 	 * if (count > 0) 
 	 * do

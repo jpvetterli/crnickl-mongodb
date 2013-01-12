@@ -266,8 +266,8 @@ public class MongoDatabaseMethods extends DatabaseMethodsImpl {
 	
 	/**
 	 * Return a composite mongodb identifier.
-	 * @param name
-	 * @return
+	 * @param names series of zero or more names
+	 * @return a composite name
 	 */
 	protected String compositeName(String... names) {
 		StringBuffer b = new StringBuffer();

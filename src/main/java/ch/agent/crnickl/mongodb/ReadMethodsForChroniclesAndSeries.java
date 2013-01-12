@@ -58,7 +58,7 @@ public class ReadMethodsForChroniclesAndSeries extends MongoDatabaseMethods {
 	 * Find a chronicle corresponding to a surrogate. An
 	 * exception is thrown if there is no such chronicle.
 	 * 
-	 * @param surrogate a surrogate
+	 * @param s a surrogate
 	 * @return a chronicle, never null
 	 * @throws T2DBException
 	 */
@@ -219,7 +219,7 @@ public class ReadMethodsForChroniclesAndSeries extends MongoDatabaseMethods {
 	/**
 	 * Find a series corresponding to a surrogate.
 	 * 
-	 * @param surrogate a surrogate
+	 * @param s a surrogate
 	 * @return a series or null
 	 * @throws T2DBException
 	 */
