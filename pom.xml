@@ -22,7 +22,8 @@
   <artifactId>crnickl-mongodb</artifactId>
   <version>1.0.0</version>
   <packaging>jar</packaging>
-  <name>MongoDB implementation of the CrNiCKL database</name>
+  <name>CrNiCKL MongoDB implementation</name>
+  <description>MongoDB implementation of the CrNiCKL database</description>
   <url>http://agent.ch/timeseries/crnickl/</url>
 
   <licenses>
