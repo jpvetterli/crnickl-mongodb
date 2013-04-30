@@ -24,20 +24,23 @@ Java running on top of SQL and NoSQL systems.
 Distribution
 ------------
 
-The distribution consists of a binary JAR with 
-compiled classes, of a javadoc JAR and of a source JAR. This is the first 
-version:
+The distribution consists of three archives
 
-	crnickl-mongodb-1.0.0.jar
-	crnickl-mongodb-1.0.0-javadoc.jar
-	crnickl-mongodb-1.0.0-sources.jar
+	crnickl-mongodb-x.y.z.jar
+	crnickl-mongodb-x.y.z-javadoc.jar
+	crnickl-mongodb-x.y.z-sources.jar
+
+with compiled classes, HTML documentation, and sources. The version number 
+`x.y.z` follows the maven convention. The distribution also includes .asc 
+files with detached cryptographic signatures.
+
 
 For Maven users
 ---------------
 
 The software is available from the <a 
 href="http://repo.maven.apache.org/maven2/ch/agent/crnickl-mongodb/">Maven central 
-repository</a>. To use version x.y.z, insert the following dependency into your 
+repository</a>. To use version `x.y.z`, insert the following dependency into your 
 `pom.xml` file:
 
     <dependency>
@@ -47,6 +50,7 @@ repository</a>. To use version x.y.z, insert the following dependency into your
       <scope>compile</scope>
     </dependency>
 
+
 Building the software
 ---------------------
 
@@ -55,7 +59,7 @@ source and [maven](<http://maven.apache.org/>) for building. The procedure
 is easy, as maven takes care of locating and downloading dependencies:
 
 	$ git clone https://github.com/jpvetterli/crnickl-mongodb.git
-	$ cd crnickl-jdbc
+	$ cd crnickl-mongodb
 	$ mvn install
 
 This builds and installs the distribution JARs in your local maven
@@ -64,12 +68,12 @@ repository. They can also be found in the `target` directory.
 When building the software by other means, the following dependencies must be
 addressed:
 
-- `crnickl-<version>.jar` [CrNiCKL database](http://agent.ch/timeseries/crnickl/)
-- `t2-<version>.jar` [Time2 Library](http://agent.ch/timeseries/t2/)  
-- `mongo-java-driver-<version>.jar` [MongoDB](http://www.mongodb.org)  
+- `crnickl-x.y.z.jar` [CrNiCKL database](http://agent.ch/timeseries/crnickl/)
+- `t2-x.y.z.jar` [Time2 Library](http://agent.ch/timeseries/t2/)  
+- `mongo-java-driver-x.y.z.jar` [MongoDB](http://www.mongodb.org)  
 
-Versions numbers can be found in the <q>POM</q> file included in the binary 
-JAR:
+Replace all `x.y.z` with the actual version numbers which can be found in the 
+<q>POM</q> file included in the binary JAR:
 
 	/META-INF/maven/ch.agent/crnickl-mongodb/pom.xml
 
@@ -91,8 +95,7 @@ Finding more information
 
 More information on CrNiCKL is available at 
 <http://agent.ch/timeseries/crnickl/>.
-
-<small>Updated: 2013-01-08/jpv</small>
+This README was updated on 2013-04-30 (jpv).
 
 <link rel="stylesheet" type="text/css" href="README.css"/>
 
