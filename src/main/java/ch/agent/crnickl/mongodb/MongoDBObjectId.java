@@ -17,6 +17,7 @@ package ch.agent.crnickl.mongodb;
 
 import org.bson.types.ObjectId;
 
+import ch.agent.crnickl.T2DBMsg.D;
 import ch.agent.crnickl.api.DBObjectId;
 
 
@@ -32,6 +33,29 @@ public class MongoDBObjectId implements DBObjectId {
 
 	public MongoDBObjectId(ObjectId id) {
 		this.id = id;
+	}
+	
+	private static ObjectId asObjectId(Object object) throws T2DBMException {
+		try {
+			return (ObjectId) object;
+		} catch (Throwable t) {
+			ObjectId oid = ObjectId.massageToObjectId(object);
+			if (oid != null)
+				return oid;
+			else
+				throw T2DBMMsg.exception(t, D.D02105, 
+					object == null ? "null" : object.toString());
+		}
+	}
+
+	/**
+	 * Construct an object id from an object.
+	 * 
+	 * @param object
+	 * @throws T2DBJException
+	 */
+	public MongoDBObjectId(Object object) throws T2DBMException {
+		this(asObjectId(object));
 	}
 	
 	public ObjectId value() {

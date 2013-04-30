@@ -27,6 +27,7 @@ import ch.agent.crnickl.T2DBMsg.E;
 import ch.agent.crnickl.api.Attribute;
 import ch.agent.crnickl.api.AttributeDefinition;
 import ch.agent.crnickl.api.Chronicle;
+import ch.agent.crnickl.api.DBObjectId;
 import ch.agent.crnickl.api.DBObjectType;
 import ch.agent.crnickl.api.DatabaseConfiguration;
 import ch.agent.crnickl.api.Property;
@@ -188,7 +189,10 @@ public class MongoDatabase extends DatabaseBackendImpl {
 		return msup;
 	}
 
-
+	@Override
+	public DBObjectId makeDBObjectId(Object object) throws T2DBException {
+		return new MongoDBObjectId(object);
+	}
 	
 	public MongoDB getMongoDB() {
 		if (mongoDB == null)
