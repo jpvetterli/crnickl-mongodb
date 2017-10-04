@@ -21,6 +21,7 @@ import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
 import com.mongodb.Mongo;
+import com.mongodb.MongoClient;
 import com.mongodb.WriteConcern;
 
 import ch.agent.crnickl.T2DBException;
@@ -56,7 +57,7 @@ public class MongoDB {
 	}
 
 	private enum WriteConcernKeyword {
-		NONE, NORMAL, SAFE, MAJORITY, FSYNC_SAFE, JOURNAL_SAFE, REPLICAS_SAFE
+		NORMAL, SAFE, MAJORITY, FSYNC_SAFE, JOURNAL_SAFE, REPLICAS_SAFE
 	}
 	
 	private DatabaseConfiguration configuration;
@@ -109,12 +110,12 @@ public class MongoDB {
 			
 			if (host != null) {
 				if (port != null) {
-					connection = new Mongo(host, Integer.parseInt(port));
+					connection = new MongoClient(host, Integer.parseInt(port));
 				} else {
-					connection = new Mongo(host);
+					connection = new MongoClient(host);
 				}
 			} else {
-				connection = new Mongo();
+				connection = new MongoClient();
 			}
 			
 			initialize(connection, database);
@@ -140,9 +141,6 @@ public class MongoDB {
 			throw T2DBMMsg.exception(e, J.J81020, keyword);
 		}
 		switch (k) {
-		case NONE:
-			wc = WriteConcern.NONE;
-			break;
 		case NORMAL:
 			wc =  WriteConcern.NORMAL;
 			break;
@@ -231,7 +229,7 @@ public class MongoDB {
 				index.put(key, 1);
 			}
 			options.put("unique", 1);
-			coll.ensureIndex(index, options);
+			coll.createIndex(index, options);
 		}
 		return coll;
 	}
@@ -241,7 +239,7 @@ public class MongoDB {
 			DBObject index = new BasicDBObject();
 			for (String key : keys)
 				index.put(key, 1);
-			coll.ensureIndex(index);
+			coll.createIndex(index);
 		}
 	}
 

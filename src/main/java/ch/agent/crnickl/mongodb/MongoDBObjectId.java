@@ -1,5 +1,5 @@
 /*
- *   Copyright 2012-2017 Hauser Olsson GmbH
+ *   Copyright 2012-2073 Hauser Olsson GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,12 +39,7 @@ public class MongoDBObjectId implements DBObjectId {
 		try {
 			return (ObjectId) object;
 		} catch (Throwable t) {
-			ObjectId oid = ObjectId.massageToObjectId(object);
-			if (oid != null)
-				return oid;
-			else
-				throw T2DBMMsg.exception(t, D.D02105, 
-					object == null ? "null" : object.toString());
+			throw T2DBMMsg.exception(t, D.D02105, object == null ? "null" : object.toString());
 		}
 	}
 
