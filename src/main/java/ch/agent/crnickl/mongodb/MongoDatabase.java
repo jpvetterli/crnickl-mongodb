@@ -1,5 +1,5 @@
 /*
- *   Copyright 2012-2013 Hauser Olsson GmbH
+ *   Copyright 2012-2017 Hauser Olsson GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,6 +47,7 @@ import ch.agent.crnickl.impl.DatabaseBackendImpl;
 import ch.agent.crnickl.impl.SchemaUpdatePolicy;
 import ch.agent.crnickl.impl.UpdateEventImpl;
 import ch.agent.crnickl.impl.UpdateEventPublisherImpl;
+import ch.agent.t2.time.TimeDomainCatalog;
 
 /**
  * A JDBC implementation of {@link DatabaseBackendImpl}. 
@@ -136,9 +137,10 @@ public class MongoDatabase extends DatabaseBackendImpl {
 	 * Construct a {@link DatabaseBackend}.
 	 * 
 	 * @param name the name of the database
+	 * @param timeDomainCatalog the catalog for scanning time domains
 	 */
-	public MongoDatabase(String name) {
-		super(name);
+	public MongoDatabase(String name, TimeDomainCatalog timeDomainCatalog) {
+		super(name, timeDomainCatalog);
 	}
 	
 	@Override
@@ -149,8 +151,6 @@ public class MongoDatabase extends DatabaseBackendImpl {
 		 */
 		return false;
 	}
-
-
 
 	@Override
 	public void configure(DatabaseConfiguration configuration) throws T2DBException {

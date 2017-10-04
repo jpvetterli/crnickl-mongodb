@@ -1,5 +1,5 @@
 /*
- *   Copyright 2012-2013 Hauser Olsson GmbH
+ *   Copyright 2012-2017 Hauser Olsson GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,9 +16,11 @@
  */
 package ch.agent.crnickl.mongodb;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
+
+import com.mongodb.BasicDBObject;
+import com.mongodb.DBObject;
 
 import ch.agent.crnickl.T2DBException;
 import ch.agent.crnickl.T2DBMsg;
@@ -33,11 +35,8 @@ import ch.agent.t2.time.Range;
 import ch.agent.t2.time.TimeDomain;
 import ch.agent.t2.time.TimeIndex;
 import ch.agent.t2.timeseries.Observation;
+import ch.agent.t2.timeseries.SparseTimeSeries;
 import ch.agent.t2.timeseries.TimeAddressable;
-import ch.agent.t2.timeseries.TimeSeriesFactory;
-
-import com.mongodb.BasicDBObject;
-import com.mongodb.DBObject;
 
 /**
  * An implementation of {@link ValueAccessMethods} for numeric data using {@link java.lang.Double}.
@@ -182,7 +181,7 @@ public class AccessMethodsForNumber extends MongoDatabaseMethods implements Valu
 			Surrogate s = series.getSurrogate();
 			DBObject obj = getObject(s, true);
 			// force sparse, so it's always possible to repair when there are excessive gaps
-			TimeAddressable<Double> values = TimeSeriesFactory.make(series.getTimeDomain(), Double.class, true);
+			TimeAddressable<Double> values = new SparseTimeSeries<Double>(Double.class, series.getTimeDomain());
 			extractValues(obj, null, values);
 			if (values.getRange().isInRange(t)) {
 				values.put(t, values.getMissingValue());
@@ -206,7 +205,7 @@ public class AccessMethodsForNumber extends MongoDatabaseMethods implements Valu
 			Surrogate s = series.getSurrogate();
 			DBObject obj = getObject(s, true);
 			// force sparse, so it's always possible to repair when there are excessive gaps
-			TimeAddressable<Double> values = TimeSeriesFactory.make(series.getTimeDomain(), Double.class, true);
+			TimeAddressable<Double> values = new SparseTimeSeries<Double>(Double.class, series.getTimeDomain());
 			extractValues(obj, null, values);
 			if (values.setRange(range))
 				done = true;
@@ -227,7 +226,7 @@ public class AccessMethodsForNumber extends MongoDatabaseMethods implements Valu
 			Surrogate s = series.getSurrogate();
 			DBObject obj = getObject(s, true);
 			// force sparse, so it's always possible to repair when there are excessive gaps
-			TimeAddressable<Double> current = TimeSeriesFactory.make(series.getTimeDomain(), Double.class, true);
+			TimeAddressable<Double> current = new SparseTimeSeries<Double>(Double.class, series.getTimeDomain());
 			extractValues(obj, null, current);
 			for(Observation<Double> obs : values) {
 				current.put(obs.getIndex(), obs.getValue());
@@ -243,7 +242,7 @@ public class AccessMethodsForNumber extends MongoDatabaseMethods implements Valu
 	private <T>void update(Series<T> series, TimeAddressable<Double> values) throws T2DBException {
 		com.mongodb.DBObject operation = null;
 		Range range = values.getRange();
-		Map<String, Double> data = new HashMap<String, Double>();
+		Map<String, Double> data = new TreeMap<String, Double>();
 		for (Observation<Double> obs : values) {
 			data.put(Long.toString(obs.getIndex()), obs.getValue());
 		}

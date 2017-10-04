@@ -1,5 +1,5 @@
 /*
- *   Copyright 2012-2013 Hauser Olsson GmbH
+ *   Copyright 2012-2017 Hauser Olsson GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,13 @@
  */
 package ch.agent.crnickl.mongodb;
 
+import com.mongodb.BasicDBObject;
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.DBObject;
+import com.mongodb.Mongo;
+import com.mongodb.WriteConcern;
+
 import ch.agent.crnickl.T2DBException;
 import ch.agent.crnickl.T2DBMsg;
 import ch.agent.crnickl.T2DBMsg.E;
@@ -26,19 +33,12 @@ import ch.agent.crnickl.api.UpdatableProperty;
 import ch.agent.crnickl.api.UpdatableValueType;
 import ch.agent.crnickl.api.ValueType;
 import ch.agent.crnickl.mongodb.T2DBMMsg.J;
-import ch.agent.t2.time.DateTime;
+import ch.agent.t2.applied.DateTime;
+import ch.agent.t2.applied.Month;
+import ch.agent.t2.applied.Workday;
+import ch.agent.t2.applied.Year;
 import ch.agent.t2.time.Day;
-import ch.agent.t2.time.Month;
 import ch.agent.t2.time.TimeDomain;
-import ch.agent.t2.time.Workday;
-import ch.agent.t2.time.Year;
-
-import com.mongodb.BasicDBObject;
-import com.mongodb.DB;
-import com.mongodb.DBCollection;
-import com.mongodb.DBObject;
-import com.mongodb.Mongo;
-import com.mongodb.WriteConcern;
 
 /**
  * MongoDB is a singleton encapsulating the MongoDB connection and the 
