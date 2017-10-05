@@ -1,7 +1,7 @@
 crnickl-mongodb : MongoDB implementation of the CrNiCKL Database 
 ================================================================
 
-	Copyright 2012-2013 Hauser Olsson GmbH.
+	Copyright 2012-2017 Hauser Olsson GmbH.
 	
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
@@ -20,6 +20,14 @@ crnickl-mongodb : MongoDB implementation of the CrNiCKL Database
 This is a MongoDB implementation of the CrNiCKL (chronicle) database. 
 CrNiCKL (pronounced "chronicle") is a database for time series written in 
 Java running on top of SQL and NoSQL systems.
+
+Version 2
+---------
+
+Version 2 brings a non-compatible change in `MongoDatabase`. The constructor 
+now takes a second parameter: a `ch.agent.t2.time.TimeDomainCatalog`. Other
+changes are a consequence of upgrading to a newer version of the MongoDB
+java driver.
 
 Distribution
 ------------
