@@ -21,12 +21,12 @@ This is a MongoDB implementation of the CrNiCKL (chronicle) database.
 CrNiCKL (pronounced "chronicle") is a database for time series written in 
 Java running on top of SQL and NoSQL systems.
 
-Version 2
----------
+Version 2.0.1
+-------------
 
-Version 2 brings a non-compatible change in `MongoDatabase`. The constructor 
-now takes a second parameter: a `ch.agent.t2.time.TimeDomainCatalog`. Other
-changes are a consequence of upgrading to a newer version of the MongoDB
+Versions 2.0.0 and 2.0.1 bring a non-compatible change in `MongoDatabase`. The 
+constructor now takes a second parameter: a `ch.agent.t2.time.TimeDomainCatalog`. 
+Other changes are a consequence of upgrading to a newer version of the MongoDB
 java driver.
 
 Distribution
@@ -95,15 +95,14 @@ The following command runs unit tests:
 Browsing the source code
 ------------------------
 
-The source is available on GitHub at 
-<http://github.com/jpvetterli/crnickl-mongodb.git>.
+The source is available on [GitHub](http://github.com/jpvetterli/crnickl-mongodb.git).
 
 Finding more information
 ------------------------
 
-More information on CrNiCKL is available at 
-<http://agent.ch/timeseries/crnickl/>.
-This README was updated on 2013-04-30 (jpv).
+More information on CrNiCKL is available at the [project web site](http://agent.ch/timeseries/crnickl/).
+
+<small>Updated: 2017-10-06/jpv.</small>
 
 <link rel="stylesheet" type="text/css" href="README.css"/>
 
